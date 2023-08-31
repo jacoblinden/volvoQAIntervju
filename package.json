@@ -1,0 +1,20 @@
+{
+  "name": "my-new-project",
+  "type": "module",
+  "devDependencies": {
+    "@wdio/allure-reporter": "^8.15.10",
+    "@wdio/cli": "^8.15.10",
+    "@wdio/local-runner": "^8.15.10",
+    "@wdio/mocha-framework": "^8.15.10",
+    "@wdio/spec-reporter": "^8.15.10",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "wdio-docker-service": "^3.2.1"
+  },
+  "scripts": {
+    "env": "docker-compose -f ./infrastructure/selenium-server.yml -p selenoid up -d",
+    "test": "docker-compose -f ./infrastructure/page-test.yml up",
+    "stop": "docker-compose -f ./infrastructure/selenium-server.yml -p selenoid down",
+    "results": "allure serve allure-results"
+  }
+}

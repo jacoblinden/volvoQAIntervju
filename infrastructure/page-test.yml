@@ -1,0 +1,15 @@
+version: "3.4"
+services:
+  # this is the custom build app which contains our automation test scripts
+  e2e:
+    image: volov-page-test
+    build: ../ # it takes the path of the dockerfile and builds it
+    command: npm run wdio
+    networks:
+      - selenoid
+    volumes:
+      - "../allure-results:/usr/lib/wdio/allure-results" # volume mapping the allure results
+
+networks:
+  selenoid:
+    external: true
