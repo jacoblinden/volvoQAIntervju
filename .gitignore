@@ -1,5 +1,5 @@
 #TO-DO fill in
-allure-results
-allure-report
+allure-results/**
+allure-report/**
 node_modules
 tmp

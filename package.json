@@ -12,9 +12,11 @@
     "wdio-docker-service": "^3.2.1"
   },
   "scripts": {
+    "wdio": "npx wdio run wdio.conf.ts",
     "env": "docker-compose -f ./infrastructure/selenium-server.yml -p selenoid up -d",
-    "test": "docker-compose -f ./infrastructure/page-test.yml up",
+    "test": "docker-compose  -f ./infrastructure/page-test.yml up --force-recreate ",
     "stop": "docker-compose -f ./infrastructure/selenium-server.yml -p selenoid down",
-    "results": "allure serve allure-results"
+    "results": "allure generate --clean  allure-results -o allure-report && allure open allure-report"
   }
 }
+ 

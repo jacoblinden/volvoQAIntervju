@@ -1,16 +1,12 @@
 import { $ } from '@wdio/globals'
-import Page from './page.js';
+import Page from './page.ts';
 
 /**
  * sub page containing specific selectors and methods for a specific page
  */
 class VolvoPage extends Page {
-
-
-
-  
-  public get title() {
-    return $("h2*=Ideas that change the world");
+   public get title() {
+    return $("#ModelIntro-1 > section > h2");
   }
 
   public get video() {
@@ -57,5 +53,9 @@ class VolvoPage extends Page {
   public get getLinkMildHybridCars(){
     return $("a[href='/intl/v/cars/other-powertrains']");
   }
+  public get allAtags() {
+    return $$("a");
+  }
+
 }
 export default new VolvoPage();
