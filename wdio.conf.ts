@@ -83,6 +83,31 @@ export const config: Options.Testrunner = {
     },
   ],
 
+   async before () {
+         expect.extend({
+           startsWith(actual: string, expected: string) {
+             return {
+               pass: actual.startsWith(expected),
+               message: () =>
+                 "String does not end with " +
+                 expected +
+                 ". Actual value: " +
+                 actual,
+             };
+           },
+           endsWith(actual: string, expected: string) {
+             return {
+               pass: actual.endsWith(expected),
+               message: () =>
+                 "String does not start with " +
+                 expected +
+                 ". Actual value: " +
+                 actual,
+             };
+           },
+         });
+    },
+
   //
   // ===================
   // Test Configurations

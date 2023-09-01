@@ -1,7 +1,7 @@
 import { expect } from "@wdio/globals";
-import VolvoPage from "../pageobjects/volvo.page.js";
+import VolvoPage from "../pageobjects/volvo.page.ts";
 
-describe("As a user i want to see the title", () => {
+describe("As a user i want to see the text", () => {
   before("Set up", async () => {
     await VolvoPage.open();
     await VolvoPage.consentButton.click();

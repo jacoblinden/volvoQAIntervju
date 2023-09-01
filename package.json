@@ -14,7 +14,7 @@
   "scripts": {
     "wdio": "npx wdio run wdio.conf.ts",
     "env": "docker-compose -f ./infrastructure/selenium-server.yml -p selenoid up -d",
-    "test": "docker-compose  -f ./infrastructure/page-test.yml up --force-recreate ",
+    "test": "docker build -t mocha/volvo . &&  docker-compose  -f ./infrastructure/page-test.yml up --force-recreate && allure generate --clean  allure-results -o allure-report && allure open allure-report ",
     "stop": "docker-compose -f ./infrastructure/selenium-server.yml -p selenoid down",
     "results": "allure generate --clean  allure-results -o allure-report && allure open allure-report"
   }

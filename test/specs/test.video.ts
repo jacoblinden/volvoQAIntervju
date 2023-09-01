@@ -10,8 +10,8 @@ describe("As a user, i want to watch a video", () => {
   it("Should contain mp4 volvo car image", async () => {
     const videoSource = await VolvoPage.videoSource;
     const source = await videoSource.getProperty("src");
-    await expect(source).toContain("https://www.volvocars.com/images/");
-    await expect(source).toContain(".mp4");
+    await expect(source).startsWith("https://www.volvocars.com/images/");
+    await expect(source).endsWith(".mp4");
   });
 
   it(" Video should autostart ", async () => {
@@ -37,9 +37,8 @@ describe("As a user, i want to watch a video", () => {
     await videoWatchStoryButton.waitForClickable({ timeout: 1000 });
     await videoWatchStoryButton.click();
     await VolvoPage.youtubeFrame.waitForDisplayed({ timeout: 2000 });
-    await expect(VolvoPage.youtubeFrame).toHaveAttrContaining(
-      "src",
-      "www.youtube.com"
-    );
+    
+    const src = await VolvoPage.youtubeFrame.getAttribute("src");
+    await expect(src).startsWith("https://www.youtube.com/embed");
   });
 });

@@ -7,10 +7,21 @@ Automated tests for "https://www.volvocars.com/intl/v/car-safety/a-million-more"
 The test suite is written in JavaScript using [webdriver.io](https://webdriver.io/). Using mocha as a test runner. These will run in the docker container along with the selenium servers.
 
 
+
 ### Prerequisites
 - [Docker](https://docs.docker.com/compose/install/)
 - [Allure](https://www.npmjs.com/package/allure-commandline)
+- [NPM](https://www.npmjs.com/get-npm)
 
+
+
+## Tech stack
+- [Docker](https://docs.docker.com/compose/install/)
+- [Allure](https://www.npmjs.com/package/allure-commandline)
+- [NPM](https://www.npmjs.com/get-npm)
+- [Webdriver.io](https://webdriver.io/)
+- [Mocha](https://mochajs.org/)
+- [Selenium-standalone](https://www.npmjs.com/package/selenium-standalone)
 
 ## Running the tests
 
@@ -28,6 +39,7 @@ Run the tests
 ```
 npm run test
 ```
+To access selenium tests ui when tests are running go to http://localhost:4444/ui/index.html
 
 Generate the report
 
@@ -35,6 +47,7 @@ Generate the report
 npm run results
 ```
 
+Videos of the tests are saved in the /tmp/videos folder.
 
 ## Test 
 The tests are designed is such a way that they run in parallel and on different browsers. 
@@ -56,4 +69,5 @@ As of the limitation in time i have not tested everything that i would have like
 - Test for performance.
 - Test for accessibility.
 - Add more ids to the html to improve testability.
+- More negative tests
 

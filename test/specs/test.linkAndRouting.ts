@@ -2,7 +2,7 @@ import { expect } from "@wdio/globals";
 import VolvoPage from "../pageobjects/volvo.page.ts";
 import NotFoundPage from "../pageobjects/notFound.page.ts";
 
-describe("As a user i want to navigate with a link", () => {
+describe("As a user i want to navigate to another page", () => {
   before("Set up", async () => {
     await VolvoPage.open();
     await VolvoPage.consentButton.click();
@@ -46,7 +46,8 @@ describe("As a user i want to navigate with a link", () => {
     await expect(tags.length).toBeGreaterThan(0);
     for (let i = 0; i < tags.length; i++) {
       const link = await tags[i].getAttribute("href");
-      if (link.includes("https")) {
+
+      if (!link.startsWith("/")) {
         await expect(tags[i]).toHaveAttribute("target", "_blank");
       }
     }
@@ -59,7 +60,7 @@ describe("As a user i want to navigate with a link", () => {
       const link = await tags[i].getAttribute("href");
       await expect(link).toBeDefined();
 
-      if (!link.includes("https")) {
+      if (link.startsWith("/")) {
         await expect(tags[i]).not.toHaveAttribute("target", "_blank");
       }
     }
